@@ -14,11 +14,11 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   work: {
-    type: Number,
+    type: String,
     required: true,
   },
   password: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
