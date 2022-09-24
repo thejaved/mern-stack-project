@@ -2,14 +2,20 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 require("dotenv").config();
 
 require("./db/dbConnection");
 
-const { User } = require("./model/userSchema");
+app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+app.use("/auth", require("./router/auth"));
+
+app.get("/", (req, res) => {
+  res.send("getting from app.js");
+});
 
 app.listen(PORT, () =>
-  console.log(`server is listening in port https://localhost:${PORT}`)
+  console.log(`server is listening in port http://localhost:${PORT}`)
 );
