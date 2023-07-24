@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password } = req.body;
   if (!name || !email || !phone || !work || !password)
-    return res.status(422).json({ message: { error: "invaild details" } });
+    return res.status(422).json({ message: { error: "Invalid Details" } });
 
   try {
     const emailExist = await User.findOne({ email });
