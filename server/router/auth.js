@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 });
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password } = req.body;
+
   if (!name || !email || !phone || !work || !password)
     return res.status(422).json({ message: { error: "Invalid Details" } });
 
@@ -30,11 +31,7 @@ router.post("/register", async (req, res) => {
 
     const saveUser = await user.save();
 
-    if (saveUser) {
-      return res
-        .status(201)
-        .json({ message: "user register successfully!", saveUser });
-    }
+    res.status(201).json({ message: "user register successfully!", saveUser });
   } catch (error) {
     res.status(500).json(error);
   }
